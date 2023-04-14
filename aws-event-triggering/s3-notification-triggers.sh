@@ -85,7 +85,7 @@ aws s3api put-bucket-notification-configuration \
 }'
 
 # Create an SNS topic and save the topic ARN to a variable
-topic_arn=$(aws sns create-topic --name my-sns-topic --output json | jq -r '.TopicArn')
+topic_arn=$(aws sns create-topic --name s3-lambda-sns --output json | jq -r '.TopicArn')
 
 # Print the TopicArn
 echo "SNS Topic ARN: $topic_arn"
