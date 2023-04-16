@@ -74,12 +74,13 @@ aws lambda add-permission \
   --source-arn "arn:aws:s3:::$bucket_name"
 
 # Create an S3 event trigger for the Lambda function
+LambdaFunctionArn="arn:aws:lambda:us-east-1:$aws_account_id:function:s3-lambda-function"
 aws s3api put-bucket-notification-configuration \
   --region "$aws_region" \
   --bucket "$bucket_name" \
   --notification-configuration '{
     "LambdaFunctionConfigurations": [{
-        "LambdaFunctionArn": "arn:aws:lambda:us-east-1:$aws_account_id:function:s3-lambda-function",
+        "LambdaFunctionArn": "'"$LambdaFunctionArn"'",
         "Events": ["s3:ObjectCreated:*"]
     }]
 }'
