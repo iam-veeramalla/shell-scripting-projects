@@ -1,6 +1,22 @@
 # AWS S3 Event Triggering
 
-**NOTE**: REPLACE YOUR AWS ACCOUNT ID IN THE LAMBDA FUNCTION CODE.
+**PREREQUISITE**
+
+1: REPLACE YOUR AWS ACCOUNT ID IN THE LAMBDA FUNCTION CODE (PYTHON FILE).
+
+2: MAKE SURE "jq" AND "zip" IS INSTALLED ON YOUR MACHINE.
+
+- For Ubuntu Machine; run :
+
+**sudo apt-get update && sudo apt-get install jq**
+
+**sudo apt-get update && sudo apt-get install zip**
+
+Type "y" when prompted.
+
+
+
+**Now, Let's Start with the Project**
 
 AWS S3 Event triggering is a very popular project used by top companies in the Industry.
 
