@@ -11,8 +11,8 @@ echo "AWS Account ID: $aws_account_id"
 # Set AWS region and bucket name
 aws_region="us-east-1"
 bucket_name="rajkumar-ultimate-bucket"
-lambda_func_name="s3-function"
-role_name="s3-sns"
+lambda_func_name="s3-lambda-function"
+role_name="s3-lambda-sns"
 email_address="Kanakatturajkumar6@gmail.com"
 
 # Create IAM Role for the project
@@ -68,7 +68,7 @@ aws lambda create-function \
 # Add Permissions to S3 Bucket to invoke Lambda
 aws lambda add-permission \
   --function-name "$lambda_func_name" \
-  --statement-id "s3-sns" \
+  --statement-id "s3-lambda-sns" \
   --action "lambda:InvokeFunction" \
   --principal s3.amazonaws.com \
   --source-arn "arn:aws:s3:::$bucket_name"
