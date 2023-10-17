@@ -9,11 +9,11 @@ aws_account_id=$(aws sts get-caller-identity --query 'Account' --output text)
 echo "AWS Account ID: $aws_account_id"
 
 # Set AWS region and bucket name
-aws_region="us-east-1"
-bucket_name="abhishek-ultimate-bucket"
+aws_region="ap-south-1"
+bucket_name="khakendra707-ultimate-bucket"
 lambda_func_name="s3-lambda-function"
 role_name="s3-lambda-sns"
-email_address="zyz@gmail.com"
+email_address="sasiram124@gmail.com"
 
 # Create IAM Role for the project
 role_response=$(aws iam create-role --role-name s3-lambda-sns --assume-role-policy-document '{
@@ -42,7 +42,7 @@ aws iam attach-role-policy --role-name $role_name --policy-arn arn:aws:iam::aws:
 aws iam attach-role-policy --role-name $role_name --policy-arn arn:aws:iam::aws:policy/AmazonSNSFullAccess
 
 # Create the S3 bucket and capture the output in a variable
-bucket_output=$(aws s3api create-bucket --bucket "$bucket_name" --region "$aws_region")
+bucket_output=$(aws s3api create-bucket --bucket "$bucket_name" --region "$aws_region" --create-bucket-configuration LocationConstraint=ap-south-1)
 
 # Print the output from the variable
 echo "Bucket creation output: $bucket_output"
@@ -74,7 +74,7 @@ aws lambda add-permission \
   --source-arn "arn:aws:s3:::$bucket_name"
 
 # Create an S3 event trigger for the Lambda function
-LambdaFunctionArn="arn:aws:lambda:us-east-1:$aws_account_id:function:s3-lambda-function"
+LambdaFunctionArn="arn:aws:lambda:ap-south-1:$aws_account_id:function:s3-lambda-function"
 aws s3api put-bucket-notification-configuration \
   --region "$aws_region" \
   --bucket "$bucket_name" \
