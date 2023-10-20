@@ -1,5 +1,10 @@
 #!/bin/bash
-
+##########
+# about 
+#input 
+#owner
+#
+helper ()
 # GitHub API URL
 API_URL="https://api.github.com"
 
@@ -35,6 +40,24 @@ function list_users_with_read_access {
         echo "$collaborators"
     fi
 }
+#help
+function helper{
+
+# check if a command was passed as an argument
+if [ $# -eq 0 ]; then
+    echo "Please provide a command as an argument."
+    exit 1
+fi
+
+# execute the command
+eval "$1"
+
+# if the command execution returns an error, handle it
+if [ $? -ne 0 ]; then
+    ./command_error_handler.sh "$1"
+fi
+}
+
 
 # Main script
 
