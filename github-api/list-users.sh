@@ -2,7 +2,7 @@
 
 
 #####################
-# Author: Sarat
+# Author: Sarat & Abhishek
 # Version: v1
 # Date: 1st-Nov
 # Description: This script lists users with read access to a GitHub repository of a specified organization. 
