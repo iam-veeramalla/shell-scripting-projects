@@ -36,7 +36,15 @@ function list_users_with_read_access {
     fi
 }
 
-# Main script
+# Function to check if required arguments are passed
+function check_arguments {
+    if [[ $# -ne 2 ]]; then
+        echo "Usage: $0 <repository_owner> <repository_name>"
+        exit 1
+    fi
+}
 
+# Main script
+check_arguments "$@"
 echo "Listing users with read access to ${REPO_OWNER}/${REPO_NAME}..."
 list_users_with_read_access
