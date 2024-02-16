@@ -1,5 +1,5 @@
 #!/bin/bash
-
+helper()
 # GitHub API URL
 API_URL="https://api.github.com"
 
@@ -10,6 +10,7 @@ TOKEN=$token
 # User and Repository information
 REPO_OWNER=$1
 REPO_NAME=$2
+
 
 # Function to make a GET request to the GitHub API
 function github_api_get {
@@ -34,6 +35,13 @@ function list_users_with_read_access {
         echo "Users with read access to ${REPO_OWNER}/${REPO_NAME}:"
         echo "$collaborators"
     fi
+}
+
+function helper{
+    expected_cmd_args = 2
+    if[$# -ne expected_cmd_args];then
+    echo "Please execute the script with required arguments"
+    echo "asd"
 }
 
 # Main script
