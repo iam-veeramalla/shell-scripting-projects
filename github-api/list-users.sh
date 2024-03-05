@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Description: GitHub API Integration (Script will list organization collaborators with read access)
+
+# Check if the required arguments are provided
+if [ $# -ne 2 ]; then
+    echo "Please provide the required arguments: <REPO_OWNER> <REPO_NAME>"
+    exit 1
+fi
+
 # GitHub API URL
 API_URL="https://api.github.com"
 
